@@ -1,25 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base { * { box-sizing: border-box; } body { margin: 0; font-family: 'DM Sans', sans-serif; background: #f3f1e7; } button, select, input { font: inherit; } button { cursor: pointer; } }
-@layer components {
-  .panel { @apply border-2 border-ink/10 bg-paper p-5 sm:p-6; }
-  .eyebrow { @apply text-[10px] font-bold uppercase tracking-[0.18em] text-ink/50; }
-  .section-title { @apply mt-1 font-display text-xl font-bold; }
-  .nav-link { @apply flex w-full items-center gap-3 border-2 border-transparent px-3 py-3 text-left text-sm font-bold transition hover:border-ink/20; }
-  .nav-link-active { @apply border-2 border-ink bg-paper shadow-retro-sm; }
-  .button-primary { @apply flex items-center gap-2 border-2 border-ink bg-tangerine px-4 py-2.5 text-xs font-bold text-ink shadow-retro-sm transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none; }
-  .button-secondary { @apply border-2 border-ink/20 px-4 py-2.5 text-xs font-bold transition hover:border-ink; }
-  .icon-button { @apply grid h-8 w-8 place-items-center border-2 border-ink/10 transition hover:border-ink; }
-  .field-label { @apply block text-xs font-bold; }
-  .field-input { @apply mt-2 block w-full border-2 border-ink/15 bg-paper px-3 py-3 text-sm outline-none transition focus:border-tangerine; }
-  .radio-label { @apply flex items-center gap-2 border-2 border-ink/10 p-3 text-sm font-bold has-[:checked]:border-ink has-[:checked]:bg-lime; }
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    background: #f3f1e7;
+  }
+  button,
+  select,
+  input {
+    font: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid #24352d;
+    outline-offset: 2px;
+  }
 }
-.animate-rise { animation: rise 500ms ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.budget-ring { display: grid; place-items: center; width: 168px; height: 168px; border-radius: 50%; background: conic-gradient(#ff8b45 0 68%, #e6ead2 68% 100%); }
-.budget-inner { display: grid; place-items: center; align-content: center; width: 126px; height: 126px; border-radius: 50%; background: #fbfaf4; }
-.budget-inner strong { font: 700 32px 'Space Grotesk', sans-serif; }
-.budget-inner strong span { font-size: 16px; }
-.budget-inner small { margin-top: -2px; font-size: 11px; color: rgb(36 53 45 / .5); }
+
+@layer components {
+  .panel {
+    @apply border-2 border-ink/10 bg-paper p-5 sm:p-6;
+  }
+  .eyebrow {
+    @apply text-[10px] font-bold uppercase tracking-[0.18em] text-ink/70;
+  }
+  .section-title {
+    @apply mt-1 font-display text-xl font-bold;
+  }
+  .nav-link {
+    @apply flex w-full items-center gap-3 border-2 border-transparent px-3 py-3 text-left text-sm font-bold transition hover:border-ink/20;
+  }
+  .nav-link-active {
+    @apply border-2 border-ink bg-paper shadow-retro-sm;
+  }
+  .button-primary {
+    @apply flex items-center gap-2 border-2 border-ink bg-tangerine px-4 py-2.5 text-xs font-bold text-ink shadow-retro-sm transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none;
+  }
+  .button-secondary {
+    @apply border-2 border-ink/20 px-4 py-2.5 text-xs font-bold transition hover:border-ink;
+  }
+  .icon-button {
+    @apply grid h-8 w-8 place-items-center border-2 border-ink/10 transition hover:border-ink;
+  }
+  .field-label {
+    @apply block text-xs font-bold;
+  }
+  .field-input {
+    @apply mt-2 block w-full border-2 border-ink/15 bg-paper px-3 py-3 text-sm outline-none transition focus:border-tangerine;
+  }
+  .radio-label {
+    @apply flex items-center gap-2 border-2 border-ink/10 p-3 text-sm font-bold has-[:checked]:border-ink has-[:checked]:bg-lime;
+  }
+}
+
+.animate-rise {
+  animation: rise 500ms ease both;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise {
+    animation: none;
+  }
+}
+
+/* Anel de orçamento: a percentagem vem de style={{ '--p': 68 }} */
+.budget-ring {
+  display: grid;
+  place-items: center;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  background: conic-gradient(#ff8b45 calc(var(--p) * 1%), #e6ead2 0);
+}
+.budget-inner {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  background: #fbfaf4;
+  color: #24352d;
+}
+.budget-inner strong {
+  font:
+    700 32px 'Space Grotesk',
+    sans-serif;
+}
+.budget-inner strong span {
+  font-size: 16px;
+}
+.budget-inner small {
+  margin-top: -2px;
+  font-size: 11px;
+  color: rgb(36 53 45 / 0.7);
+}
