@@ -67,7 +67,7 @@ export function Overview({ totals, history, month, transactions, onNavigate, onD
         <p className="mb-2 font-mono text-xs font-bold uppercase tracking-[0.24em] text-tangerine-dark">
           {todayLabel()}
         </p>
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">Olá, Ana</h1>
+        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">Olá, Gabriel</h1>
         <p className="mt-3 max-w-xl text-sm leading-6 text-ink/70">
           Aqui está um resumo do seu dinheiro para você seguir tranquila durante o mês.
         </p>

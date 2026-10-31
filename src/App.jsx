@@ -137,8 +137,8 @@ export default function App() {
               AS
             </div>
             <div>
-              <p className="text-sm font-bold">Ana Souza</p>
-              <p className="text-xs text-ink/70">3º semestre · Eng. Civil</p>
+              <p className="text-sm font-bold">Gabriel Escutelo</p>
+              <p className="text-xs text-ink/70">5º semestre · Eng. Informática</p>
             </div>
           </div>
         </div>
